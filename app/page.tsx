@@ -2,19 +2,28 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Twitter, Instagram, Youtube, Volume2, VolumeX } from "lucide-react";
+import {
+  Twitter,
+  Instagram,
+  Youtube,
+  Volume2,
+  VolumeX,
+  Clapperboard,
+  Lollipop,
+} from "lucide-react";
 import Image from "next/image";
-import { Clapperboard } from "lucide-react";
-import { Lollipop } from "lucide-react";
 
 export default function Home() {
+  // State for sound and jump scare effects
   const [muted, setMuted] = useState(false);
   const [jumpScare, setJumpScare] = useState(false);
   const [shake, setShake] = useState(false);
+
+  // Refs for audio and footer
   const bgAudioRef = useRef<HTMLAudioElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
-  // IntersectionObserver to detect Footer
+  // IntersectionObserver to trigger jump scare when footer is visible
   useEffect(() => {
     if (!footerRef.current) return;
     const observer = new IntersectionObserver(
@@ -26,22 +35,42 @@ export default function Home() {
           return () => clearTimeout(timeout);
         }
       },
-      { threshold: 0.9 } // Trigger when 90% of Footer is visible
+      { threshold: 0.9 }
     );
     observer.observe(footerRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Play/Pause audio
+  // Auto play audio on mount
   useEffect(() => {
     if (bgAudioRef.current) {
-      if (muted) {
-        bgAudioRef.current.pause();
-      } else {
-        bgAudioRef.current.play();
+      bgAudioRef.current.muted = true; // Start muted to satisfy autoplay rules
+      const playPromise = bgAudioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            bgAudioRef.current!.muted = false; // Unmute immediately after autoplay is allowed
+          })
+          .catch(() => {
+            // Autoplay failed, audio will stay muted until user interaction
+          });
       }
     }
-  }, [muted]);
+  }, []);
+
+  // Handle user mute/unmute toggle
+  const handleToggleMute = () => {
+    if (bgAudioRef.current) {
+      if (muted) {
+        bgAudioRef.current.muted = false;
+        bgAudioRef.current.play();
+      } else {
+        bgAudioRef.current.muted = true;
+        bgAudioRef.current.pause();
+      }
+    }
+    setMuted(!muted);
+  };
 
   return (
     <main
@@ -49,7 +78,7 @@ export default function Home() {
         shake ? "animate-shake" : ""
       }`}
     >
-      {/* Background */}
+      {/* Background layers */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[url('/fog.png')] bg-cover bg-center animate-moveFog opacity-30" />
         <motion.img
@@ -67,12 +96,13 @@ export default function Home() {
         />
       </div>
 
-      {/* Audio */}
+      {/* Background audio */}
       <audio
         ref={bgAudioRef}
         src="https://cdn.pixabay.com/download/audio/2025/05/09/audio_b8b2e52547.mp3?filename=hide-from-the-clown-339207.mp3"
         loop
         autoPlay
+        muted
       />
 
       {/* Header */}
@@ -82,31 +112,19 @@ export default function Home() {
             ART <Lollipop className="mt-1" />
           </div>
           <nav className="hidden md:flex gap-6 text-gray-200/80">
-            <a
-              href="#home"
-              className="hover:text-red-400 flex items-center gap-1"
-            >
+            <a href="#home" className="hover:text-red-400 flex items-center gap-1">
               <Twitter size={16} />
               Home
             </a>
-            <a
-              href="#story"
-              className="hover:text-red-400 flex items-center gap-1"
-            >
+            <a href="#story" className="hover:text-red-400 flex items-center gap-1">
               <Instagram size={16} />
               Story
             </a>
-            <a
-              href="#gallery"
-              className="hover:text-red-400 flex items-center gap-1"
-            >
+            <a href="#gallery" className="hover:text-red-400 flex items-center gap-1">
               <Youtube size={16} />
               Gallery
             </a>
-            <a
-              href="#video"
-              className="hover:text-red-400 flex items-center gap-1"
-            >
+            <a href="#video" className="hover:text-red-400 flex items-center gap-1">
               <Clapperboard size={16} />
               Video
             </a>
@@ -114,7 +132,7 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setMuted(!muted)}
+            onClick={handleToggleMute}
             className="px-3 py-2 rounded bg-white/5 hover:bg-white/10 transition"
           >
             {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
@@ -125,7 +143,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section
         id="home"
         className="relative z-10 min-h-screen flex items-center justify-center px-6"
@@ -160,10 +178,7 @@ export default function Home() {
             The Lore of Art the Clown
           </h2>
           <p className="text-gray-300 text-lg leading-relaxed tracking-wide">
-            Art the Clown is a sinister presence, known for stalking abandoned
-            alleys and abandoned places. His sinister grin and silent movements
-            make him a nightmare to behold. Few survive encounters with him, and
-            legends say he thrives on fear itself.
+            Art the Clown is a sinister presence, known for stalking abandoned alleys and abandoned places. His sinister grin and silent movements make him a nightmare to behold. Few survive encounters with him, and legends say he thrives on fear itself.
           </p>
         </div>
       </section>
