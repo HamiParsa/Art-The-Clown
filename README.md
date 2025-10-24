@@ -65,8 +65,6 @@ This project demonstrates **interactive front-end design**, **animations**, **au
 
 <div align="center">
   <img src="/pic1" width="700px" /> 
-
-
 </div>
 
 ---
