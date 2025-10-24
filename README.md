@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>🤡 Art The Clown Cinematic Experience</h1>
+  <p>Explore the sinister world of Art the Clown through a cinematic web experience with parallax backgrounds, jump scares, and interactive elements.</p>
+  <a href="https://hamiparsa.github.io/Art-The-Clown/"> 
+    <img src="https://img.shields.io/badge/View_Live_Project-000?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+</div>
 
-## Getting Started
+---
 
-First, run the development server:
+## 🔥 About Art The Clown Cinematic Experience
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Art The Clown Cinematic Experience** is an interactive web project built with **Next.js**, **React**, and **TypeScript**.  
+It features full-screen sections, dynamic background animations, jump scares, and cinematic storytelling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project demonstrates **interactive UI**, **parallax/animated backgrounds**, and **sound integration** for immersive horror experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Features
 
-## Learn More
+<ul>
+  <li>🎬 <b>Hero Section</b> with animated entrance text</li>
+  <li>🌫️ <b>Background Effects</b> — fog overlay and animated background image</li>
+  <li>🔊 <b>Background Music</b> with mute/unmute button</li>
+  <li>🩸 <b>Jump Scare</b> — triggers when reaching the footer with shake animation</li>
+  <li>🖼️ <b>Gallery Section</b> — showcasing Art the Clown images with hover scale effect</li>
+  <li>🎞️ <b>Video Section</b> — cinematic encounter clip</li>
+  <li>📱 <b>Responsive Design</b> — optimized for mobile, tablet, and desktop</li>
+  <li>🖱️ <b>Interactive Header & Navigation</b> with social icons</li>
+</ul>
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧠 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Technology | Purpose |
+|------------|---------|
+| ⚛️ **React** | Dynamic UI and animations |
+| 🧭 **Next.js** | File-based routing & optimization |
+| 🟦 **TypeScript** | Type safety and structured code |
+| 🎨 **Tailwind CSS** | Styling and responsive design |
+| 🎞️ **Framer Motion** | Animations, background scaling, jump scare effects |
+| 🔊 **HTML Audio** | Background music integration |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Description
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Users can:
+
+- Scroll through full-screen sections with hero, story, gallery, and video 🎬  
+- Experience foggy and red-tinted animated backgrounds 🌫️  
+- Listen to cinematic background music with mute/unmute functionality 🔊  
+- Encounter a jump scare when reaching the footer 🩸  
+- View a gallery of Art the Clown images with hover animation 🖼️  
+- Watch a cinematic video clip of Art the Clown 🎞️  
+- Navigate via social icons and smooth scroll 🖱️  
+
+This project demonstrates **interactive front-end design**, **animations**, **audio integration**, and **responsive layouts**.
+
+---
+
+## 🖼️ Project Preview
+
+<div align="center">
+  <img src="/pic1" width="700px" /> 
+
+
+</div>
+
+---
+
+## 👨‍💻 Author
+
+**Developed by:** [Your Name](https://github.com/yourusername)  
+💬 Front-End Developer | Creating cinematic and interactive web experiences  
+
+---
+
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=react,next,typescript,tailwind,framer" />
+</div>
