@@ -64,7 +64,7 @@ This project demonstrates **interactive front-end design**, **animations**, **au
 ## 🖼️ Project Preview
 
 <div align="center">
-  <img src="/pic1" width="700px" /> 
+  <img src="/pic1.png" width="700px" /> 
 </div>
 
 ---
